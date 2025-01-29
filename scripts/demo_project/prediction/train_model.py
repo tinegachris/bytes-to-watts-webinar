@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_squared_error
 import joblib
 
@@ -23,15 +23,26 @@ target = data['energy_consumption_kW']
 # Split data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
-# Train model
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
+# Hyperparameter tuning using GridSearchCV
+param_grid = {
+  'n_estimators': [100, 200, 300],
+  'max_depth': [None, 10, 20, 30],
+  'min_samples_split': [2, 5, 10],
+  'min_samples_leaf': [1, 2, 4]
+}
+
+grid_search = GridSearchCV(estimator=RandomForestRegressor(random_state=42), param_grid=param_grid, cv=3, n_jobs=-1, verbose=2)
+grid_search.fit(X_train, y_train)
+
+# Train model with best parameters
+best_model = grid_search.best_estimator_
+best_model.fit(X_train, y_train)
 
 # Evaluate model
-predictions = model.predict(X_test)
+predictions = best_model.predict(X_test)
 mse = mean_squared_error(y_test, predictions)
 print(f'Mean Squared Error: {mse}')
 
 # Save model
-joblib.dump(model, 'scripts/demo_project/data/forecast_model.pkl')
+joblib.dump(best_model, 'scripts/demo_project/data/forecast_model.pkl')
 print("Model saved as 'scripts/demo_project/data/forecast_model.pkl'")
