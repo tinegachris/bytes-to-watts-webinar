@@ -19,3 +19,5 @@ env/
 ~*
 *.swp
 .DS_Store
+
+/junk/
