@@ -79,7 +79,17 @@ Check the `resources/` directory for related articles, papers, and documentation
 
 ## License
 
-This project is licensed under the terms specified in the `LICENSE` file (if included).
+This project is licensed under the terms specified in the `LICENSE` file.
+
+## Contributing
+
+We welcome contributions to improve the project. Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Make your changes and commit them with clear messages.
+4. Push your changes to your fork.
+5. Open a pull request to the main repository.
 
 ## Contact
 
