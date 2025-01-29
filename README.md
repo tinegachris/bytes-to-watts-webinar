@@ -1,4 +1,5 @@
 # Bytes to Watts Webinar
+
 ![bytes-to-watts-webinar](https://github.com/user-attachments/assets/b08f805e-50bb-4779-bf0d-a30a470c6abf)
 
 Welcome to the Bytes to Watts Webinar. This repository contains all the materials related to the webinar, including slides, scripts, resources, images, notes, and Q&A.
