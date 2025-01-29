@@ -33,7 +33,6 @@ Welcome to the Bytes to Watts Webinar. This repository contains all the material
 - `images/`: Diagrams, charts, or visuals used in the presentation
 - `notes/`: Speaker notes or extended content
 - `Q&A/`: Collected questions and answers from the webinar
-- `LICENSE`: Licensing information (optional)
 
 ## Getting Started
 
