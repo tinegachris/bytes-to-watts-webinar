@@ -14,8 +14,8 @@ def create_features(timestamps):
         'hour': [t.hour for t in timestamps],
         'day_of_week': [t.weekday() for t in timestamps],
         'month': [t.month for t in timestamps],
-        'battery_status_%': [0] * len(timestamps),  # Placeholder values
-        'solar_generation_kW': [0] * len(timestamps)  # Placeholder values
+        'solar_generation_kW': [0] * len(timestamps),  # Placeholder values
+        'battery_status_%': [0] * len(timestamps)  # Placeholder values
     })
 
 future_features = create_features(future_timestamps)
