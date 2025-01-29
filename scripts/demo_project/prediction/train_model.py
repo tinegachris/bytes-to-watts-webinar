@@ -1,44 +1,37 @@
 import pandas as pd
-import numpy as np
-import pickle
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+import joblib
 
 # Load data
-solar_df = pd.read_csv("data/solar_generation.csv")
-energy_df = pd.read_csv("data/energy_consumption.csv")
+solar_data = pd.read_csv('scripts/demo_project/data/solar_generation.csv')
+energy_data = pd.read_csv('scripts/demo_project/data/energy_consumption.csv')
+battery_data = pd.read_csv('scripts/demo_project/data/battery_status.csv')
 
-# Merge datasets on timestamp
-solar_df['timestamp'] = pd.to_datetime(solar_df['timestamp'])
-energy_df['timestamp'] = pd.to_datetime(energy_df['timestamp'])
-data = pd.merge(solar_df, energy_df, on='timestamp')
+# Merge data on timestamp
+data = pd.merge(solar_data, energy_data, on='timestamp')
+data = pd.merge(data, battery_data, on='timestamp')
 
-# Feature engineering
-data['hour'] = data['timestamp'].dt.hour
-data['day_of_week'] = data['timestamp'].dt.dayofweek
-data['month'] = data['timestamp'].dt.month
-data.drop(columns=['timestamp'], inplace=True)
-
-# Define features and target
-X = data[['hour', 'day_of_week', 'month', 'solar_generation_kW']]
-y = data['energy_consumption_kW']
+# Create features and target
+data['hour'] = pd.to_datetime(data['timestamp']).dt.hour
+data['day_of_week'] = pd.to_datetime(data['timestamp']).dt.weekday
+data['month'] = pd.to_datetime(data['timestamp']).dt.month
+features = data[['hour', 'day_of_week', 'month', 'solar_generation_kW', 'battery_status_%']]
+target = data['energy_consumption_kW']
 
 # Split data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
 # Train model
 model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Evaluate model
-y_pred = model.predict(X_test)
-mae = mean_absolute_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-print(f"Model Performance: MAE={mae:.2f}, R2={r2:.2f}")
+predictions = model.predict(X_test)
+mse = mean_squared_error(y_test, predictions)
+print(f'Mean Squared Error: {mse}')
 
-# Save trained model
-with open("data/forecast_model.pkl", "wb") as model_file:
-    pickle.dump(model, model_file)
-
-print("Model trained and saved successfully.")
+# Save model
+joblib.dump(model, 'scripts/demo_project/data/forecast_model.pkl')
+print("Model saved as 'scripts/demo_project/data/forecast_model.pkl'")
