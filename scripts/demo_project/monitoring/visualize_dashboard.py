@@ -1,11 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from datetime import datetime
 
 # Load data from CSV files
-solar_df = pd.read_csv('../data/solar_generation.csv')
-energy_df = pd.read_csv('../data/energy_consumption.csv')
-battery_df = pd.read_csv('../data/battery_status.csv')
+solar_df = pd.read_csv('scripts/demo_project/data/solar_generation.csv')
+energy_df = pd.read_csv('scripts/demo_project/data/energy_consumption.csv')
+battery_df = pd.read_csv('scripts/demo_project/data/battery_status.csv')
 
 # Convert timestamps to datetime objects
 solar_df['timestamp'] = pd.to_datetime(solar_df['timestamp'])
