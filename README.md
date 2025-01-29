@@ -42,15 +42,15 @@ To get started with the smart solar monitoring project, follow these steps:
     ```sh
     git clone https://github.com/tinegachris/bytes-to-watts-webinar.git
     cd bytes-to-watts-webinar/scripts
+    ```
+
+2. Install the required dependencies using Poetry:
+
     ```sh
+    poetry install
+    ```
 
-1. Install the required dependencies using Poetry:
-
-  ```sh
-  poetry install
-  ```
-
-1. Run the real-time dashboard:
+3. Run the real-time dashboard:
 
     ```sh
     streamlit run monitoring/visualize_dashboard.py
