@@ -20,4 +20,5 @@ env/
 *.swp
 .DS_Store
 
-/junk/
+# Ignore poetry lock file
+poetry.lock
