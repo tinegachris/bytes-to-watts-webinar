@@ -31,12 +31,11 @@ Welcome to the Bytes to Watts Webinar. This repository contains all the material
   - `README.md`: Explanation of scripts and how to run the demo
 - `resources/`: Related articles, papers, and documentation
 - `images/`: Diagrams, charts, or visuals used in the presentation
-- `notes/`: Speaker notes or extended content
 - `Q&A/`: Collected questions and answers from the webinar
 
 ## Getting Started
 
-To get started with the smart solar monitoring project, follow these steps:
+To get started with the demo project, follow these steps:
 
 1. Clone the repository:
 
@@ -48,6 +47,7 @@ To get started with the smart solar monitoring project, follow these steps:
 2. Install the required dependencies using Poetry:
 
     ```sh
+    pip install poetry
     poetry install
     ```
 
@@ -61,7 +61,7 @@ To get started with the smart solar monitoring project, follow these steps:
 
 ### Smart Solar Monitoring
 
-The smart solar monitoring project demonstrates how to monitor and optimize solar energy usage using simulated data. It includes the following components:
+The smart solar monitoring project demonstrates how to optimize solar energy usage using simulated data. It includes the following components:
 
 - **Data**: Simulated historical and real-time solar energy data.
 - **Dashboard**: A Streamlit-based real-time dashboard to visualize energy data.
@@ -76,10 +76,6 @@ The utility scripts include helper functions for data manipulation and visualiza
 
 Check the `resources/` directory for related articles, papers, and documentation that provide additional context and information about the topics covered in the webinar.
 
-## License
-
-This project is licensed under the terms specified in the `LICENSE` file.
-
 ## Contributing
 
 We welcome contributions to improve the project. Please follow these steps to contribute:
@@ -92,6 +88,6 @@ We welcome contributions to improve the project. Please follow these steps to co
 
 ## Contact
 
-For any questions or feedback, please reach out to the webinar organizers or open an issue in this repository.
+For any questions or feedback, please open an issue in this repository.
 
 Thank you for participating in the Bytes to Watts Webinar!
